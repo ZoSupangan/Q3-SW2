@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant Budget friendly</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1e1e2f;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #2c2c3d;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .container {
+      display: flex;
+      padding: 20px;
+    }
+    .sidebar, .main {
+      padding: 20px;
+      background: #2c2c3d;
+      margin: 10px;
+      border-radius: 8px;
+    }
+    .sidebar {
+      width: 25%;
+    }
+    .main {
+      flex: 1;
+      text-align: center;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #4cafef;
+      color: #fff;
+      cursor: pointer;
+    }
+    .restaurant-btn {
+      display: block;
+      margin: 5px 0;
+      padding: 8px;
+      background: #444;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .restaurant-btn:hover {
+      background: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Restaurant Budget with discount finder </h2>
+    <nav>
+
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="sidebar">
+      <h3>Restaurants</h3>
+      <div class="restaurant-btn" onclick="showDiscount('Jollibee')">Jollibee</div>
+      <div class="restaurant-btn" onclick="showDiscount('McDonalds')">McDonald's</div>
+      <div class="restaurant-btn" onclick="showDiscount('Chowking')">Chowking</div>
+      <div class="restaurant-btn" onclick="showDiscount('Maxs')">Max's Restaurant</div>
+    </div>
+
+    <div class="main">
+      <h3>Looking for a restaurant?</h3>
+      <p>Enter your budget and see senior friendly discounts!</p>
+      <input type="text" id="budget" placeholder="Enter budget...">
+      <button onclick="findRestaurant()">Find budget</button>
+      <p id="result"></p>
+      <p id="discount"></p>
+    </div>
+  </div>
+
+  <script>
+    function findRestaurant() {
+      const budget = document.getElementById('budget').value;
+      const result = document.getElementById('result');
+      if (!budget) {
+        result.textContent = "Please enter a budget.";
+      } else if (parseInt(budget) < 300) {
+        result.textContent = "Fast food chains like Jollibee or McDonald's are affordable and honor senior discounts.";
+      } else if (parseInt(budget) < 800) {
+        result.textContent = "Casual dining like Chowking or Max's offers hearty meals with senior perks.";
+      } else {
+        result.textContent = "Fancy restaurants have highend budget for you.";
+      }
+    }
+
+    function showDiscount(restaurant) {
+      const discount = document.getElementById('discount');
+      switch(restaurant) {
+        case 'Jollibee':
+          discount.textContent = "Jollibee: Seniors get 20% off on all meals.";
+          break;
+        case 'McDonalds':
+          discount.textContent = "McDonald's: 20% senior discount applies to value meals and coffee.";
+          break;
+        case 'Chowking':
+          discount.textContent = "Chowking: Seniors enjoy 20% off on rice meals, dim sum, and noodles.";
+          break;
+        case 'Maxs':
+          discount.textContent = "Max's Restaurant: Seniors receive 20% off dine-in meals, including fried chicken and set menus.";
+          break;
+      }
+    }
+  </script>
+</body>
+</html>
